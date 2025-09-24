@@ -79,26 +79,33 @@
     }
 
     /* Hero Section */
-    .hero img {
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      border: 4px solid #fff;
-      margin-bottom: 20px;
-      object-fit: cover;
-    }
+   .hero {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  flex-direction: column;
+  padding: 20px;
+  background: url('images/U1.jpg') no-repeat center center/cover;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5); /* adjust 0.5 for darkness */
+  z-index: 1;
+}
 
-    .hero h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-    }
+.hero img,
+.hero h1,
+.hero p {
+  position: relative;
+  z-index: 2; /* text and profile above overlay */
+}
 
-    .hero p {
-      max-width: 500px;
-      text-align: center;
-      color: #bbb;
-      font-size: 1.1rem;
-    }
 
     /* Project Sections */
     .project {
@@ -213,7 +220,7 @@
   <!-- Project Sections -->
   <section class="project">
     <div class="project-card">
- <img src="Look1.gif" alt="Vehicle Suspension Dynamic Simulator">
+ <img src="projects/Look1.gif" alt="Vehicle Suspension Dynamic Simulator">
     <h2>Vehicle Suspension Dynamic Simulator</h2>
     <p>
 •	Problem Analysis: Developed and optimized Python scripts for suspension simulation and performance analysis.
@@ -226,24 +233,24 @@
   </section>
 
   <section class="project">
-    <img src="SS 1.png" alt="White Paper">
+    <img src="projects/SS 1.png" alt="White Paper">
     <h2>White Paper on the Integration of Electric Aircraft Systems</h2>
     <p>This paper examines the potential benefits of adopting hybrid technology, how it functions, and weighs the challenges that limit the expansion of electric aircraft commercially. </p>
-    <a href="Research 1.pdf" target="_blank">View Project</a>
+    <a href="projects/Research 1.pdf" target="_blank">View Project</a>
   </section>
 
   <section class="project">
-    <img src="Copy1.png" alt="Prosthesis">
+    <img src="projects/Copy1.png" alt="Prosthesis">
     <h2>Linear Actuator Driven Hand Prosthetic</h2>
     <p>People with missing arms and hands face several challenges in their daily lives. People with such disabilities tend to look for prosthetics that can help improve their lives. Oftentimes, they face pricing and reliability issues. With this in mind, our intention was to develop an innovative, cost-effective, and reliable hand prosthetic that can solve this problem.</p>
-    <a href="https://github.com/yourusername/project3" target="_blank">View Project</a>
+    <a href="projects/Project Report - FED1.pdf" target="_blank">View Project</a>
   </section>
 
   <section class="project">
     <img src="SS2.png" alt="Maglev Technology">
     <h2>Study on the Urban Integration of Shanghai’s Maglev Technology</h2>
     <p>This research analyzes the efficiency of maglev technology and its consistency in successfully operating at a commercial level. It analyzes the urban setting of Shanghai, and the impact electromagnets have had on the landscape. Deformation and environmental vibration are linked to maglev technology and its severity is analyzed. The reversibility of these adverse effects is studied, and methods of monitoring are proposed. </p>
-    <a href="Research 2.pdf" target="_blank">View Project</a>
+    <a href="projects/Research 2.pdf" target="_blank">View Project</a>
   </section>
 
   <!-- Contact Section -->
