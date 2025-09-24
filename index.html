@@ -19,40 +19,7 @@
       background: #1a1a1a;
       color: #fff;
       overflow-x: hidden;
-      display: flex;
-    }
-
-    /* Sidebar Navigation */
-    .sidebar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 80px;
-      height: 100vh;
-      background: #111;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 20px 0;
-      z-index: 1000;
-    }
-
-    .sidebar a {
-      margin: 20px 0;
-      font-size: 1.5rem;
-      color: #fff;
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-
-    .sidebar a:hover {
-      color: #00acee;
-    }
-
-    /* Main Content */
-    .main {
-      margin-left: 80px;
-      width: calc(100% - 80px);
+      scroll-snap-type: y mandatory;
     }
 
     section {
@@ -62,11 +29,12 @@
       justify-content: center;
       align-items: center;
       flex-direction: column;
+      scroll-snap-align: start;
+      position: relative;
       padding: 20px;
       opacity: 0;
       transform: translateY(50px);
       transition: all 1s ease;
-      scroll-snap-align: start;
     }
 
     section.visible {
@@ -74,16 +42,49 @@
       transform: translateY(0);
     }
 
+    /* Floating Navigation Bar */
+    .floating-nav {
+      position: fixed;
+      top: 50%;
+      left: 20px;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 12px;
+      padding: 10px 5px;
+      z-index: 1000;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    }
+
+    .floating-nav a {
+      margin: 10px 0;
+      font-size: 1.5rem;
+      color: #fff;
+      text-decoration: none;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .floating-nav a:hover {
+      color: #00acee;
+      transform: scale(1.2);
+    }
+
+    @media (max-width: 768px) {
+      .floating-nav { display: none; }
+    }
+
     /* Hero Section */
     .hero {
       height: 100vh;
-      width: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
       text-align: center;
-      background: url('images/U1.jpg') no-repeat center center/cover;
       position: relative;
+      padding: 20px;
+      background: url('images/U1.jpg') no-repeat center center/cover;
     }
 
     .hero::before {
@@ -101,7 +102,6 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      max-width: 600px;
     }
 
     .profile-pic {
@@ -119,17 +119,18 @@
     }
 
     .hero p {
-      font-size: 1.1rem;
-      color: #bbb;
+      max-width: 500px;
       text-align: center;
+      color: #bbb;
+      font-size: 1.1rem;
     }
 
     .shpe-logo {
       width: 100px;
       margin-top: 20px;
-      transition: transform 0.3s, opacity 1s ease;
       opacity: 0;
       transform: translateY(20px);
+      transition: all 1s ease;
     }
 
     .shpe-logo:hover {
@@ -138,13 +139,19 @@
 
     /* Project Sections */
     .project {
-      background: #222;
+      min-height: 100vh;
+      width: 100%;
       display: flex;
       flex-direction: column;
+      justify-content: center;
       align-items: center;
-      padding: 40px 20px;
       text-align: center;
-      width: 100%;
+      padding: 40px 20px;
+      background: #222;
+      scroll-snap-align: start;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 1s ease;
     }
 
     .project img {
@@ -154,7 +161,7 @@
       border-radius: 10px;
       margin-bottom: 20px;
       box-shadow: 0 6px 15px rgba(0,0,0,0.6);
-      transition: transform 0.5s ease;
+      transition: transform 0.5s ease, opacity 1s ease;
     }
 
     .project img:hover {
@@ -168,17 +175,18 @@
 
     .project p {
       max-width: 600px;
-      margin-bottom: 20px;
+      margin: 0 auto 20px auto;
       color: #bbb;
     }
 
     .project a {
+      display: inline-block;
       padding: 10px 20px;
       border-radius: 20px;
       background: #333;
       color: #fff;
       text-decoration: none;
-      transition: background 0.3s;
+      transition: 0.3s;
     }
 
     .project a:hover {
@@ -188,34 +196,44 @@
     /* Timeline Section */
     .timeline {
       background: #1e1e1e;
-      padding: 60px 20px;
-      width: 100%;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
+      padding: 60px 20px;
+      scroll-snap-align: start;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 1s ease;
+    }
+
+    .timeline.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .timeline h2 {
       font-size: 2rem;
       margin-bottom: 40px;
+      color: #fff;
     }
 
     .timeline-container {
       display: flex;
       flex-direction: column;
       gap: 30px;
-      max-width: 800px;
       width: 100%;
+      max-width: 800px;
     }
 
     .timeline-item {
       background: #222;
-      padding: 20px;
+      padding: 20px 25px;
       border-radius: 10px;
       box-shadow: 0 6px 15px rgba(0,0,0,0.5);
+      transition: transform 0.5s ease, opacity 1s ease;
       opacity: 0;
       transform: translateY(50px);
-      transition: transform 0.5s ease, opacity 1s ease;
     }
 
     .timeline-item h3 {
@@ -243,11 +261,6 @@
     /* Contact Section */
     .contact {
       background: #1e1e1e;
-      padding: 60px 20px;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
     }
 
     .contact h2 {
@@ -270,7 +283,10 @@
       font-size: 1rem;
     }
 
-    textarea { min-height: 120px; resize: none; }
+    textarea {
+      min-height: 120px;
+      resize: none;
+    }
 
     button {
       padding: 12px;
@@ -283,12 +299,12 @@
       transition: 0.3s;
     }
 
-    button:hover { background: #008bb7; }
+    button:hover {
+      background: #008bb7;
+    }
 
     /* Responsive */
-    @media (max-width: 768px) {
-      .sidebar { display: none; }
-      .main { margin-left: 0; width: 100%; }
+    @media (max-width: 600px) {
       .profile-pic { width: 120px; height: 120px; }
       .hero h1 { font-size: 2rem; }
       .hero p { font-size: 1rem; }
@@ -297,122 +313,151 @@
       .project h2 { font-size: 1.6rem; }
       .project p { font-size: 1rem; }
     }
+
+    @media (min-width: 1024px) {
+      .project img { max-width: 800px; }
+    }
   </style>
 </head>
 <body>
 
-  <!-- Sidebar -->
-  <div class="sidebar">
+  <!-- Floating Nav Bar -->
+  <div class="floating-nav">
     <a href="#cover" title="Cover"><i class="fas fa-home"></i></a>
     <a href="#projects" title="Projects"><i class="fas fa-briefcase"></i></a>
     <a href="#experience" title="Experience"><i class="fas fa-tasks"></i></a>
     <a href="#contact" title="Contact"><i class="fas fa-envelope"></i></a>
+    <a href="projects/Resume.pdf" target="_blank" title="Resume"><i class="fas fa-file-alt"></i></a>
   </div>
 
-  <!-- Main Content -->
-  <div class="main">
-    <!-- Hero / Cover -->
-    <section id="cover" class="hero">
-      <div class="hero-content">
-        <img src="images/Headshot 9:16.JPEG" alt="Profile Picture" class="profile-pic">
-        <h1>Jossue Sarango</h1>
-        <p>I hope to inspire others from similar backgrounds, where oftentimes opportunities can feel limited. I wish to utilize the blessings God has brought forth in my life to create a legacy that not only honors my parents’ sacrifices but empowers others to reach their full potential.</p>
-        <a href="https://www.shpe.org" target="_blank">
-          <img src="images/shpe-logo.png.webp" alt="SHPE Logo" class="shpe-logo">
-        </a>
+  <!-- Hero / Cover -->
+  <section id="cover" class="hero">
+    <div class="hero-content">
+      <img src="images/Headshot 9:16.JPEG" alt="Profile Picture" class="profile-pic">
+      <h1>Jossue Sarango</h1>
+      <p>I hope to inspire others from similar backgrounds, where oftentimes opportunities can feel limited. I wish to utilize the blessings God has brought forth in my life to create a legacy that not only honors my parents’ sacrifices but empowers others to reach their full potential.</p>
+      <a href="https://www.shpe.org" target="_blank">
+        <img src="images/shpe-logo.png.webp" alt="SHPE Logo" class="shpe-logo">
+      </a>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="project">
+    <img src="projects/Look1.gif" alt="Vehicle Suspension Dynamic Simulator">
+    <h2>Vehicle Suspension Dynamic Simulator</h2>
+    <p>• Problem Analysis: Developed and optimized Python scripts for suspension simulation and performance analysis.<br>
+       • Technology Implementation: Applied algorithmic problem-solving techniques and computational methods for engineering analysis.<br>
+       • Testing & Verification: Created test plans and verification protocols for simulation accuracy.
+    </p>
+    <a href="pending" target="_blank">View Project</a>
+  </section>
+
+  <section class="project">
+    <img src="images/SS 1.png" alt="White Paper">
+    <h2>White Paper on the Integration of Electric Aircraft Systems</h2>
+    <p>This paper examines the potential benefits of adopting hybrid technology, how it functions, and weighs the challenges that limit the expansion of electric aircraft commercially.</p>
+    <a href="projects/Research 1.pdf" target="_blank">View Project</a>
+  </section>
+
+  <section class="project">
+    <img src="images/Copy1.png" alt="Prosthesis">
+    <h2>Linear Actuator Driven Hand Prosthetic</h2>
+    <p>People with missing arms and hands face several challenges in their daily lives. People with such disabilities tend to look for prosthetics that can help improve their lives. Oftentimes, they face pricing and reliability issues. With this in mind, our intention was to develop an innovative, cost-effective, and reliable hand prosthetic that can solve this problem.</p>
+    <a href="projects/Project Report - FED1.pdf" target="_blank">View Project</a>
+  </section>
+
+  <section class="project">
+    <img src="images/info1.jpg" alt="Maglev Technology">
+    <h2>Study on the Urban Integration of Shanghai’s Maglev Technology</h2>
+    <p>This research analyzes the efficiency of maglev technology and its consistency in successfully operating at a commercial level. It analyzes the urban setting of Shanghai, and the impact electromagnets have had on the landscape. Deformation and environmental vibration are linked to maglev technology and its severity is analyzed. The reversibility of these adverse effects is studied, and methods of monitoring are proposed.</p>
+    <a href="projects/Research 2.pdf" target="_blank">View Project</a>
+  </section>
+
+  <!-- Timeline / Experience -->
+  <section id="experience" class="timeline">
+    <h2>Experience</h2>
+    <div class="timeline-container">
+      <!-- Example timeline item -->
+      <div class="timeline-item">
+        <h3>Baja Society of Automotive Engineers</h3>
+        <span>Sept 2025 - Present</span>
+        <p>• Structural Analysis & FEA: Perform finite element analysis of roll cage frame considering front, side, and rear impact conditions.<br>
+           • Design Optimization: Developed integrated chassis design incorporating suspension, steering, braking, and powertrain systems.
+        </p>
       </div>
-    </section>
-
-    <!-- Projects -->
-    <section id="projects" class="project">
-      <img src="projects/Look1.gif" alt="Vehicle Suspension Dynamic Simulator">
-      <h2>Vehicle Suspension Dynamic Simulator</h2>
-      <p>• Problem Analysis: Developed and optimized Python scripts for suspension simulation and performance analysis.<br>
-         • Technology Implementation: Applied algorithmic problem-solving techniques and computational methods for engineering analysis.<br>
-         • Testing & Verification: Created test plans and verification protocols for simulation accuracy.
-      </p>
-      <a href="pending" target="_blank">View Project</a>
-    </section>
-
-    <section class="project">
-      <img src="images/SS 1.png" alt="White Paper">
-      <h2>White Paper on the Integration of Electric Aircraft Systems</h2>
-      <p>This paper examines the potential benefits of adopting hybrid technology, how it functions, and weighs the challenges that limit the expansion of electric aircraft commercially.</p>
-      <a href="projects/Research 1.pdf" target="_blank">View Project</a>
-    </section>
-
-    <section class="project">
-      <img src="images/Copy1.png" alt="Prosthesis">
-      <h2>Linear Actuator Driven Hand Prosthetic</h2>
-      <p>People with missing arms and hands face several challenges in their daily lives. People with such disabilities tend to look for prosthetics that can help improve their lives. Oftentimes, they face pricing and reliability issues. With this in mind, our intention was to develop an innovative, cost-effective, and reliable hand prosthetic that can solve this problem.</p>
-      <a href="projects/Project Report - FED1.pdf" target="_blank">View Project</a>
-    </section>
-
-    <section class="project">
-      <img src="images/info1.jpg" alt="Maglev Technology">
-      <h2>Study on the Urban Integration of Shanghai’s Maglev Technology</h2>
-      <p>This research analyzes the efficiency of maglev technology and its consistency in successfully operating at a commercial level. It analyzes the urban setting of Shanghai, and the impact electromagnets have had on the landscape. Deformation and environmental vibration are linked to maglev technology and its severity is analyzed. The reversibility of these adverse effects is studied, and methods of monitoring are proposed.</p>
-      <a href="projects/Research 2.pdf" target="_blank">View Project</a>
-    </section>
-
-    <!-- Timeline / Experience -->
-    <section id="experience" class="timeline">
-      <h2>Experience</h2>
-      <div class="timeline-container">
-        <div class="timeline-item">
-          <h3>Baja Society of Automotive Engineers</h3>
-          <span>Sept 2025 - Present</span>
-          <p>• Structural Analysis & FEA: Perform finite element analysis (FEA) of roll cage frame considering front, side, and rear impact conditions.<br>
-             • Design Optimization: Developed an integrated chassis design incorporating suspension, steering, braking, and powertrain systems.
-          </p>
-        </div>
-
-        <div class="timeline-item">
-          <h3>Regional Public Affairs Intern - PSEG</h3>
-          <span>June 2025 - Sept 2025</span>
-          <p>• Project Management: Oversaw electrical substation and 69kV circuit projects.<br>
-             • Process Improvement: Designed and implemented automated data consolidation process.<br>
-             • Stakeholder Management: Served as company liaison to elected officials and community leaders.
-          </p>
-        </div>
-
-        <!-- Add remaining timeline items here -->
+      <div class="timeline-item">
+        <h3>Regional Public Affairs Intern - PSEG</h3>
+        <span>June 2025 - Aug 2025</span>
+        <p>• Project Management: Oversaw electrical substation and 69kV circuit projects.<br>
+           • Process Improvement: Automated data consolidation process, improving reporting efficiency by 20%.<br>
+           • Problem Analysis: Developed emergency management communication protocols.<br>
+           • Stakeholder Management: Liaison to elected officials and community leaders for millions of customers.
+        </p>
       </div>
-    </section>
+      <div class="timeline-item">
+        <h3>New Jersey Governor's Fellow - Center for Hispanic, Policy, Research, and Development</h3>
+        <span>June 2025 - Aug 2025</span>
+        <p>• Led a 6-member team in an 8-week CHPRD New Jersey Fellows Project to develop and present a strategic plan adopted by HISPA to engage political stakeholders and expand its outreach.<br>
+           • Gained hands-on experience in public service through projects in government, non-profits, and the private sector, collaborating with industry leaders and public officials.
+        </p>
+      </div>
+      <div class="timeline-item">
+        <h3>T.E.A.M. Coordinator - New Jersey Institute of Technology (EOP)</h3>
+        <span>January 2025 - Present</span>
+        <p>• Program Development: Designed promotional materials and implemented engagement strategies to support retention goals.<br>
+           •	Cross-functional Collaboration: Worked with diverse teams to plan, execute, and promote mentorship and career development programs.
+        </p>
+      </div>
+      <div class="timeline-item">
+        <h3>Vice President, Public Relations Committee - Society of Hispanic Professional Engineers (Region 4)</h3>
+        <span>Sept 2024 - Present</span>
+        <p>•  Collaborated within a 13-person team to orchestrate over 60 campus and social events per semester,enriching the social and professional lives of 300+ student members. <br>
+           • Successfully broke attendance records weekly by averaging 200% growth in member engagement.
+        </p>
+      </div>
+       <div class="timeline-item">
+        <h3>Sales Associate - Primark USA</h3>
+        <span>May 2023 - Present</span>
+        <p>• Exceeded sales goals by recommending appropriate products and upselling to meet customer needs.<br>
+           • Processed sales transactions including handling cash, credit card payments, and returns.
+        </p>
+      </div>
+       <div class="timeline-item">
+        <h3>Food Server & Cashier - La Paloma Food Market</h3>
+        <span>June 2021 - Oct 2023</span>
+        <p>• Conducted and led store opening and closing procedures. <br>
+           • Resolved customer complaints and concerns in a professional and courteous manner.
+        </p>
+      </div>
+      <!-- Add remaining timeline items here -->
+    </div>
+  </section>
 
-    <!-- Contact -->
-    <section id="contact" class="contact">
-      <h2>Get in Touch</h2>
-      <form action="https://formspree.io/f/yourFormID" method="POST">
-        <input type="text" name="name" placeholder="Your Name" required>
-        <input type="email" name="_replyto" placeholder="Your Email" required>
-        <textarea name="message" placeholder="Your Message" required></textarea>
-        <button type="submit">Send Message</button>
-      </form>
-    </section>
-  </div>
+  <!-- Contact -->
+  <section id="contact" class="contact">
+    <h2>Get in Touch</h2>
+    <form action="https://formspree.io/f/mwprkywd" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="_replyto" placeholder="Your Email" required>
+      <textarea name="message" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
 
-  <!-- Scripts -->
+  <!-- Fade-in + slide-up script -->
   <script>
-    // Section fade-in
     const sections = document.querySelectorAll('section');
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
       });
     }, { threshold: 0.2 });
     sections.forEach(section => observer.observe(section));
 
-    // Timeline fade-in
-    const timelineItems = document.querySelectorAll('.timeline-item');
-    const timelineObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-      });
-    }, { threshold: 0.2 });
-    timelineItems.forEach(item => timelineObserver.observe(item));
-
-    // SHPE logo fade-in
+    // Fade-in for SHPE logo
     const shpeLogo = document.querySelector('.shpe-logo');
     if (shpeLogo) {
       const logoObserver = new IntersectionObserver(entries => {
@@ -420,11 +465,24 @@
           if (entry.isIntersecting) {
             entry.target.style.opacity = '1';
             entry.target.style.transform = 'translateY(0)';
+            logoObserver.unobserve(entry.target);
           }
         });
       }, { threshold: 0.5 });
       logoObserver.observe(shpeLogo);
     }
+
+    // Fade-in for timeline items
+    const timelineItems = document.querySelectorAll('.timeline-item');
+    const timelineObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.2 });
+    timelineItems.forEach(item => timelineObserver.observe(item));
   </script>
+
 </body>
 </html>
