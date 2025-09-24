@@ -115,12 +115,25 @@
     }
 
     .project img {
-      max-width: 80%;
-      height: auto;
-      border-radius: 10px;
-      margin-bottom: 20px;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.6);
-    }
+  width: 300px;          /* fixed width for all project images */
+  height: 200px;         /* fixed height */
+  object-fit: cover;     /* ensures image fills box without stretching */
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.6);
+  transition: transform 0.3s ease;
+}
+
+.project img:hover {
+  transform: scale(1.05); /* subtle zoom on hover for visual effect */
+}
+@media (max-width: 600px) {
+  .project img {
+    width: 90%;
+    height: auto;
+  }
+}
+
 
     .project h2 {
       margin-bottom: 15px;
@@ -247,7 +260,7 @@
   </section>
 
   <section class="project">
-    <img src="SS2.png" alt="Maglev Technology">
+    <img src="projects/SS2.png" alt="Maglev Technology">
     <h2>Study on the Urban Integration of Shanghai’s Maglev Technology</h2>
     <p>This research analyzes the efficiency of maglev technology and its consistency in successfully operating at a commercial level. It analyzes the urban setting of Shanghai, and the impact electromagnets have had on the landscape. Deformation and environmental vibration are linked to maglev technology and its severity is analyzed. The reversibility of these adverse effects is studied, and methods of monitoring are proposed. </p>
     <a href="projects/Research 2.pdf" target="_blank">View Project</a>
