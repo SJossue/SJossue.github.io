@@ -136,19 +136,26 @@
     }
 
     /* Only project images get uniform sizing */
-    .project img {
-      width: 300px;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 10px;
-      margin-bottom: 20px;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.6);
-      transition: transform 0.3s ease;
-    }
+   .project img {
+  width: 100%;
+  max-width: 600px; /* grows on desktop but not too large */
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.6);
+  transition: transform 0.3s ease;
+}
 
-    .project img:hover {
-      transform: scale(1.05);
-    }
+.project img:hover {
+  transform: scale(1.05);
+}
+
+/* Optional: slightly larger images on very wide screens */
+@media (min-width: 1024px) {
+  .project img {
+    max-width: 800px;
+  }
+}
 
     .project h2 {
       margin-bottom: 15px;
@@ -255,9 +262,9 @@
 
   <!-- Hero -->
   <section class="hero">
-    <img src="Headshot 9:16.JPEG" alt="Profile Picture">
-    <h1>Hi, I’m Jossue Sarango</h1>
-    <p>My aspirations in life extend far beyond just my success; I hope to inspire others from similar backgrounds, where oftentimes opportunities can feel limited. I wish to utilize the blessings God has brought forth in my life to create a legacy that not only honors my parents’ sacrifices but empowers others to reach their full potential.</p>
+    <img src="images/Headshot 9:16.JPEG" alt="Profile Picture">
+    <h1>Jossue Sarango</h1>
+    <p>I cherish the opportunities my parents never got to experience.</p>
   </section>
 
   <!-- Project Sections -->
