@@ -34,6 +34,12 @@ section.visible {
   transform: translateY(0);
 }
 
+/* If JS is disabled or not running, ensure sections are visible */
+html.no-js section {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
 /* Import component styles */
 @import url('header.css');
 @import url('hero.css');

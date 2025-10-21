@@ -37,4 +37,5 @@ function loadTimeline() {
   });
 }
 
-export { loadTimeline, timelineData };
+// Expose for classic scripts
+window.loadTimeline = loadTimeline;

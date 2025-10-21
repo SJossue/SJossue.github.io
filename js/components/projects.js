@@ -46,4 +46,5 @@ function loadProjects() {
   });
 }
 
-export { loadProjects, projectsData };
+// Expose for non-module scripts
+window.loadProjects = loadProjects;

@@ -40,4 +40,5 @@ function loadMedia() {
   lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
 }
 
-export { loadMedia };
+// Expose loader globally
+window.loadMedia = loadMedia;
