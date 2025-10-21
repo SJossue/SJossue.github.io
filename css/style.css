@@ -40,6 +40,9 @@ html.no-js section {
   transform: none !important;
 }
 
+/* Debug badge */
+.debug-badge { position: fixed; right: 14px; bottom: 14px; background: rgba(0,0,0,0.6); color: #fff; padding: 6px 10px; border-radius: 8px; font-size: 0.9rem; z-index: 9999; }
+
 /* Import component styles */
 @import url('header.css');
 @import url('hero.css');
