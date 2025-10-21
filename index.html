@@ -3,486 +3,58 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>About Me</title>
+  <title>Jossue Sarango - Portfolio</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    /* Reset + global */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: #1a1a1a;
-      color: #fff;
-      overflow-x: hidden;
-      scroll-snap-type: y mandatory;
-    }
-
-    section {
-      min-height: 100vh;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      scroll-snap-align: start;
-      position: relative;
-      padding: 20px;
-      opacity: 0;
-      transform: translateY(50px);
-      transition: all 1s ease;
-    }
-
-    section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 30px;
-  background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(6px);
-  z-index: 1100; /* higher than floating nav */
-}
-
-.header-left {
-  font-size: 1rem;
-}
-
-.header-left span {
-  display: block;
-  color: #aaa;
-  font-size: 0.85rem;
-}
-
-.header-right a {
-  margin-left: 15px;
-  font-size: 1.3rem;
-  color: #fff;
-  transition: 0.3s;
-}
-
-.header-right a:hover {
-  color: #00acee;
-}
-
-    /* Floating Navigation Bar */
-    .floating-nav {
-      position: fixed;
-      top: 50%;
-      left: 20px;
-      transform: translateY(-50%);
-      display: flex;
-      flex-direction: column;
-      background: rgba(0, 0, 0, 0.6);
-      border-radius: 12px;
-      padding: 10px 5px;
-      z-index: 1000;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-    }
-
-    .floating-nav a {
-      margin: 10px 0;
-      font-size: 1.5rem;
-      color: #fff;
-      text-decoration: none;
-      text-align: center;
-      transition: all 0.3s ease;
-    }
-
-    .floating-nav a:hover {
-      color: #00acee;
-      transform: scale(1.2);
-    }
-
-    @media (max-width: 768px) {
-      .floating-nav { display: none; }
-    }
-
-    /* Hero Section */
-    .hero {
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      position: relative;
-      padding: 20px;
-      background: url('images/U1.jpg') no-repeat center center/cover;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.5);
-      z-index: 1;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .profile-pic {
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      border: 4px solid #fff;
-      margin-bottom: 20px;
-      object-fit: cover;
-    }
-
-    .hero h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-    }
-
-    .hero p {
-      max-width: 500px;
-      text-align: center;
-      color: #bbb;
-      font-size: 1.1rem;
-    }
-
-    .shpe-logo {
-      width: 100px;
-      margin-top: 20px;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 1s ease;
-    }
-
-    .shpe-logo:hover {
-      transform: scale(1.05);
-    }
-
-    /* Project Sections */
-    .project {
-      min-height: 100vh;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 40px 20px;
-      background: #222;
-      scroll-snap-align: start;
-      opacity: 0;
-      transform: translateY(50px);
-      transition: all 1s ease;
-    }
-
-    .project img {
-      width: 100%;
-      max-width: 600px;
-      height: auto;
-      border-radius: 10px;
-      margin-bottom: 20px;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.6);
-      transition: transform 0.5s ease, opacity 1s ease;
-    }
-
-    .project img:hover {
-      transform: scale(1.05);
-    }
-
-    .project h2 {
-      font-size: 2rem;
-      margin-bottom: 15px;
-    }
-
-    .project p {
-      max-width: 600px;
-      margin: 0 auto 20px auto;
-      color: #bbb;
-    }
-
-    .project a {
-      display: inline-block;
-      padding: 10px 20px;
-      border-radius: 20px;
-      background: #333;
-      color: #fff;
-      text-decoration: none;
-      transition: 0.3s;
-    }
-
-    .project a:hover {
-      background: #555;
-    }
-
-    /* Timeline Section */
-    .timeline {
-      background: #1e1e1e;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 60px 20px;
-      scroll-snap-align: start;
-      opacity: 0;
-      transform: translateY(50px);
-      transition: all 1s ease;
-    }
-
-    .timeline.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .timeline h2 {
-      font-size: 2rem;
-      margin-bottom: 40px;
-      color: #fff;
-    }
-
-    .timeline-container {
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
-      width: 100%;
-      max-width: 800px;
-    }
-
-    .timeline-item {
-      background: #222;
-      padding: 20px 25px;
-      border-radius: 10px;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.5);
-      transition: transform 0.5s ease, opacity 1s ease;
-      opacity: 0;
-      transform: translateY(50px);
-    }
-
-    .timeline-item h3 {
-      margin-bottom: 5px;
-      color: #00acee;
-    }
-
-    .timeline-item span {
-      font-size: 0.9rem;
-      color: #aaa;
-      margin-bottom: 10px;
-      display: block;
-    }
-
-    .timeline-item p {
-      color: #bbb;
-      font-size: 1rem;
-    }
-
-    .timeline-item.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Contact Section */
-    .contact {
-      background: #1e1e1e;
-    }
-
-    .contact h2 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      width: 100%;
-      max-width: 500px;
-    }
-
-    input, textarea {
-      padding: 12px;
-      border: none;
-      border-radius: 6px;
-      font-size: 1rem;
-    }
-
-    textarea {
-      min-height: 120px;
-      resize: none;
-    }
-
-    button {
-      padding: 12px;
-      border: none;
-      border-radius: 6px;
-      font-size: 1rem;
-      background: #00acee;
-      color: #fff;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    button:hover {
-      background: #008bb7;
-    }
-
-    /* Responsive */
-    @media (max-width: 600px) {
-      .profile-pic { width: 120px; height: 120px; }
-      .hero h1 { font-size: 2rem; }
-      .hero p { font-size: 1rem; }
-      .shpe-logo { width: 80px; }
-      .project img { max-width: 90%; }
-      .project h2 { font-size: 1.6rem; }
-      .project p { font-size: 1rem; }
-    }
-
-    @media (min-width: 1024px) {
-      .project img { max-width: 800px; }
-    }
-  </style>
+  
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/projects.css">
+  <link rel="stylesheet" href="css/media.css">
+  <link rel="stylesheet" href="css/timeline.css">
 </head>
 <body>
 
-  <!-- Header -->
-<header>
-  <div class="header-left">
-    <strong>Jossue Sarango</strong>
-    <span>New Jersey - NYC</span>
-  </div>
-  <div class="header-right">
-    <a href="https://linkedin.com/in/jossue-sarango" target="_blank"><i class="fab fa-linkedin"></i></a>
-    <a href="https://github.com/SJossue" target="_blank"><i class="fab fa-github"></i></a>
-    <a href="https://sjossue.my.canva.site" target="_blank"><i class="fas fa-globe"></i></a>
-    <a href="mailto:jossuesarango1@gmail.com"><i class="fas fa-envelope"></i></a>
-  </div>
-</header>
+  <!-- Header Component -->
+  <header id="main-header"></header>
 
-  <!-- Floating Nav Bar -->
-  <div class="floating-nav">
-    <a href="#cover" title="Cover"><i class="fas fa-home"></i></a>
-    <a href="#projects" title="Projects"><i class="fas fa-briefcase"></i></a>
-    <a href="#experience" title="Experience"><i class="fas fa-tasks"></i></a>
-    <a href="#contact" title="Contact"><i class="fas fa-envelope"></i></a>
-    <a href="images/Resume Sept 2025.docx" target="_blank" title="Resume"><i class="fas fa-file-alt"></i></a>
-  </div>
+  <!-- Floating Navigation Component -->
+  <nav id="floating-nav"></nav>
 
-  <!-- Hero / Cover -->
+  <!-- Hero Section -->
   <section id="cover" class="hero">
     <div class="hero-content">
       <img src="images/Headshot 9:16.JPEG" alt="Profile Picture" class="profile-pic">
       <h1>Jossue Sarango</h1>
-      <p>I hope to inspire others from similar backgrounds, where oftentimes opportunities can feel limited. I wish to utilize the blessings God has brought forth in my life to create a legacy that not only honors my parents’ sacrifices but empowers others to reach their full potential.</p>
+      <p>I hope to inspire others from similar backgrounds, where oftentimes opportunities can feel limited. I wish to utilize the blessings God has brought forth in my life to create a legacy that not only honors my parents' sacrifices but empowers others to reach their full potential.</p>
       <a href="https://www.shpe.org" target="_blank">
         <img src="images/shpe-logo.png.webp" alt="SHPE Logo" class="shpe-logo">
       </a>
     </div>
   </section>
 
-  <!-- Projects -->
-  <section id="projects" class="project">
-    <img src="projects/Look1.gif" alt="Vehicle Suspension Dynamic Simulator">
-    <h2>Vehicle Suspension Dynamic Simulator</h2>
-    <p>• Problem Analysis: Developed and optimized Python scripts for suspension simulation and performance analysis.<br>
-       • Technology Implementation: Applied algorithmic problem-solving techniques and computational methods for engineering analysis.<br>
-       • Testing & Verification: Created test plans and verification protocols for simulation accuracy.
-    </p>
-    <a href="images/Resume Sept 2025.docx" target="_blank">View Project</a>
-  </section>
-
-  <section class="project">
-    <img src="images/SS 1.png" alt="White Paper">
-    <h2>White Paper on the Integration of Electric Aircraft Systems</h2>
-    <p>This paper examines the potential benefits of adopting hybrid technology, how it functions, and weighs the challenges that limit the expansion of electric aircraft commercially.</p>
-    <a href="projects/Research 1.pdf" target="_blank">View Project</a>
-  </section>
-
-  <section class="project">
-    <img src="images/Copy1.png" alt="Prosthesis">
-    <h2>Linear Actuator Driven Hand Prosthetic</h2>
-    <p>People with missing arms and hands face several challenges in their daily lives. People with such disabilities tend to look for prosthetics that can help improve their lives. Oftentimes, they face pricing and reliability issues. With this in mind, our intention was to develop an innovative, cost-effective, and reliable hand prosthetic that can solve this problem.</p>
-    <a href="projects/Project Report - FED1.pdf" target="_blank">View Project</a>
-  </section>
-
-  <section class="project">
-    <img src="images/info1.jpg" alt="Maglev Technology">
-    <h2>Study on the Urban Integration of Shanghai’s Maglev Technology</h2>
-    <p>This research analyzes the efficiency of maglev technology and its consistency in successfully operating at a commercial level. It analyzes the urban setting of Shanghai, and the impact electromagnets have had on the landscape. Deformation and environmental vibration are linked to maglev technology and its severity is analyzed. The reversibility of these adverse effects is studied, and methods of monitoring are proposed.</p>
-    <a href="projects/Research 2.pdf" target="_blank">View Project</a>
-  </section>
-
-  <!-- Timeline / Experience -->
+  <!-- Timeline Section -->
   <section id="experience" class="timeline">
     <h2>Experience</h2>
-    <div class="timeline-container">
-      <!-- Example timeline item -->
-      <div class="timeline-item">
-        <h3>Baja Society of Automotive Engineers</h3>
-        <span>Sept 2025 - Present</span>
-        <p>• Structural Analysis & FEA: Perform finite element analysis of roll cage frame considering front, side, and rear impact conditions.<br>
-           • Design Optimization: Developed integrated chassis design incorporating suspension, steering, braking, and powertrain systems.
-        </p>
-      </div>
-      <div class="timeline-item">
-        <h3>Regional Public Affairs Intern - PSEG</h3>
-        <span>June 2025 - Aug 2025</span>
-        <p>• Project Management: Oversaw electrical substation and 69kV circuit projects.<br>
-           • Process Improvement: Automated data consolidation process, improving reporting efficiency by 20%.<br>
-           • Problem Analysis: Developed emergency management communication protocols.<br>
-           • Stakeholder Management: Liaison to elected officials and community leaders for millions of customers.
-        </p>
-      </div>
-      <div class="timeline-item">
-        <h3>New Jersey Governor's Fellow - Center for Hispanic, Policy, Research, and Development</h3>
-        <span>June 2025 - Aug 2025</span>
-        <p>• Led a 6-member team in an 8-week CHPRD New Jersey Fellows Project to develop and present a strategic plan adopted by HISPA to engage political stakeholders and expand its outreach.<br>
-           • Gained hands-on experience in public service through projects in government, non-profits, and the private sector, collaborating with industry leaders and public officials.
-        </p>
-      </div>
-      <div class="timeline-item">
-        <h3>T.E.A.M. Coordinator - New Jersey Institute of Technology (EOP)</h3>
-        <span>January 2025 - Present</span>
-        <p>• Program Development: Designed promotional materials and implemented engagement strategies to support retention goals.<br>
-           •	Cross-functional Collaboration: Worked with diverse teams to plan, execute, and promote mentorship and career development programs.
-        </p>
-      </div>
-      <div class="timeline-item">
-        <h3>Vice President, Public Relations Committee - Society of Hispanic Professional Engineers (Region 4)</h3>
-        <span>Sept 2024 - Present</span>
-        <p>•  Collaborated within a 13-person team to orchestrate over 60 campus and social events per semester,enriching the social and professional lives of 300+ student members. <br>
-           • Successfully broke attendance records weekly by averaging 200% growth in member engagement.
-        </p>
-      </div>
-       <div class="timeline-item">
-        <h3>Sales Associate - Primark USA</h3>
-        <span>May 2023 - Present</span>
-        <p>• Exceeded sales goals by recommending appropriate products and upselling to meet customer needs.<br>
-           • Processed sales transactions including handling cash, credit card payments, and returns.
-        </p>
-      </div>
-       <div class="timeline-item">
-        <h3>Food Server & Cashier - La Paloma Food Market</h3>
-        <span>June 2021 - Oct 2023</span>
-        <p>• Conducted and led store opening and closing procedures. <br>
-           • Resolved customer complaints and concerns in a professional and courteous manner.
-        </p>
-      </div>
-      <!-- Add remaining timeline items here -->
+    <div class="timeline-container" id="timeline-items"></div>
+  </section>
+
+  <!-- Projects Section (4 full-page cards loaded by JS) -->
+  <section id="projects" class="projects-container"></section>
+
+  <!-- Media / Photos Gallery -->
+  <section id="media" class="media">
+    <h2>Photos & Media</h2>
+    <div class="gallery" id="gallery"></div>
+    <div id="lightbox" class="lightbox" aria-hidden="true">
+      <button class="lightbox-close" aria-label="Close">×</button>
+      <img src="" alt="" class="lightbox-img">
+      <p class="lightbox-caption"></p>
     </div>
   </section>
 
-  <!-- Contact -->
+  <!-- Contact Section -->
   <section id="contact" class="contact">
     <h2>Get in Touch</h2>
     <form action="https://formspree.io/f/mwprkywd" method="POST">
@@ -493,44 +65,28 @@ header {
     </form>
   </section>
 
-  <!-- Fade-in + slide-up script -->
-  <script>
-    const sections = document.querySelectorAll('section');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.2 });
-    sections.forEach(section => observer.observe(section));
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>&copy; <span id="year"></span> Jossue Sarango — Built with ❤️</p>
+      <nav class="footer-nav">
+        <a href="#cover">Home</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#media">Media</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </footer>
 
-    // Fade-in for SHPE logo
-    const shpeLogo = document.querySelector('.shpe-logo');
-    if (shpeLogo) {
-      const logoObserver = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-            logoObserver.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.5 });
-      logoObserver.observe(shpeLogo);
-    }
-
-    // Fade-in for timeline items
-    const timelineItems = document.querySelectorAll('.timeline-item');
-    const timelineObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.2 });
-    timelineItems.forEach(item => timelineObserver.observe(item));
-  </script>
+  <!-- Load JavaScript Components -->
+  <script src="js/components/header.js"></script>
+  <script src="js/components/navigation.js"></script>
+  <script src="js/components/projects.js"></script>
+  <script src="js/components/timeline.js"></script>
+  <script src="js/components/media.js"></script>
+  <script src="js/components/animations.js"></script>
+  <script src="js/main.js"></script>
 
 </body>
 </html>
