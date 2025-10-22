@@ -31,7 +31,7 @@ header {
 }
 
 .header-right a:hover {
-  color: #8b0b0b;
+  color: #00122b;
 }
 
 /* Floating Navigation Bar */
@@ -59,7 +59,7 @@ header {
 }
 
 #floating-nav a:hover {
-  color: #8b0b0b;
+  color: #00122b;
   transform: scale(1.2);
 }
 

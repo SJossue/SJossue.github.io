@@ -4,12 +4,12 @@
 }
 
 .project {
-  min-height: 100vh;
+  min-height: 80vh;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px 10px;
+  padding: 5px;
   background: #000000;
   scroll-snap-align: start;
   opacity: 0;
@@ -30,7 +30,7 @@
   width: 100%;
   max-width: 600px;
   height: auto;
-  border-radius: 10px;
+  border-radius: 20px;
   box-shadow: 0 6px 15px rgba(0,0,0,0.6);
   transition: transform 0.5s ease;
 }
@@ -46,13 +46,14 @@
 .project p {
   max-width: 700px;
   color: #bbb;
-  line-height: 1.6;
+  line-height: 1.2;
+  margin-bottom: 15px;
 }
 
 .project a {
   display: inline-block;
-  padding: 10px 20px;
-  border-radius: 20px;
+  padding: 10px ;
+  border-radius: 10px;
   background: #333;
   color: #fff;
   text-decoration: none;
@@ -60,7 +61,7 @@
   font-weight: bold;
 }
 
-.project a:hover { background: #55845e; transform: translateY(-2px); }
+.project a:hover { background: #1a3357; transform: translateY(-2px); }
 
 @media (min-width: 1000px) {
   .project .project-inner { flex-direction: row; align-items: center; }

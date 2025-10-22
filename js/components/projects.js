@@ -1,7 +1,7 @@
 // Projects data and loader
 const projectsData = [
  {
-    image: 'images/Copy1.png',
+    image: 'images/lda project.png',
     title: 'Linear Actuator Driven Hand Prosthetic',
     description: 'Design and prototyping of an affordable linear-actuated hand prosthetic.',
     link: 'projects/Project Report - FED1.pdf'
