@@ -1,6 +1,6 @@
 // Simple media gallery and lightbox
 const galleryData = [
-  'images/U1.jpg',
+  'images/introbackground.jpg',
   'images/SS 1.png',
   'images/info1.jpg',
   'images/Headshot 9:16.JPEG'
