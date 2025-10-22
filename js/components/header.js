@@ -8,15 +8,14 @@ function loadHeader() {
     </div>
     <nav class="header-nav">
       <a href="#cover">Home</a>
+      <a href="#experience">Experience</a> 
       <a href="#projects">Projects</a>
-      <a href="#experience">Experience</a>
       <a href="#media">Media</a>
       <a href="#contact">Contact</a>
     </nav>
     <div class="header-right">
       <a href="https://linkedin.com/in/jossue-sarango" target="_blank"><i class="fab fa-linkedin"></i></a>
       <a href="https://github.com/SJossue" target="_blank"><i class="fab fa-github"></i></a>
-      <a href="https://sjossue.my.canva.site" target="_blank"><i class="fas fa-globe"></i></a>
       <a href="mailto:jossuesarango1@gmail.com"><i class="fas fa-envelope"></i></a>
     </div>
   `;

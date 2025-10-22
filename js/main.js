@@ -1,8 +1,6 @@
 // Initialize all components when page loads
 document.addEventListener('DOMContentLoaded', () => {
   console.log('Main init: starting');
-  const debug = id => { const el = document.getElementById('debug-status'); if (el) el.textContent = id; };
-  debug('JS: starting');
   try { if (typeof loadHeader === 'function') { loadHeader(); console.log('loadHeader OK'); } }
   catch (e) { console.error('loadHeader error', e); }
   try { if (typeof loadNavigation === 'function') { loadNavigation(); console.log('loadNavigation OK'); } }
@@ -24,23 +22,12 @@ document.addEventListener('DOMContentLoaded', () => {
   } catch (e) { console.error('loadMedia error', e); }
 
   try {
-    if (typeof initAnimations === 'function') { initAnimations(); console.log('initAnimations OK'); debug('JS: animations'); }
-    else { console.warn('initAnimations not found'); debug('JS: no animations'); }
-  } catch (e) { console.error('initAnimations error', e); debug('JS: animations error'); }
+    if (typeof initAnimations === 'function') { initAnimations(); console.log('initAnimations OK'); }
+    else console.warn('initAnimations not found');
+  } catch (e) { console.error('initAnimations error', e); }
 
   // footer year
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  // Safety: ensure sections become visible if initialization didn't mark them
-  setTimeout(() => {
-    const anyVisible = Array.from(document.querySelectorAll('section')).some(s => s.classList.contains('visible'));
-    if (!anyVisible) {
-      console.warn('No sections became visible — forcing visible state as fallback');
-      debug('JS: forcing visible');
-      document.querySelectorAll('section').forEach(s => s.classList.add('visible'));
-    } else {
-      debug('JS: ready');
-    }
-  }, 800);
 });

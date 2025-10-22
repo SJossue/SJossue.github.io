@@ -3,7 +3,7 @@ const galleryData = [
   'images/introbackground.jpg',
   'images/SS 1.png',
   'images/info1.jpg',
-  'images/Headshot 9:16.JPEG'
+  'images/Headshot.jpg'
 ];
 
 function loadMedia() {
