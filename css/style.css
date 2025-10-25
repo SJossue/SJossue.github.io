@@ -8,7 +8,7 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background: #858585;
+  background: #20252c;
   color: #fff;
   overflow-x: hidden;
   scroll-snap-type: y mandatory;
@@ -120,7 +120,7 @@ button {
   border: none;
   border-radius: 6px;
   font-size: 1rem;
-  background: #858585;
+  background: #737272;
   color: #fff;
   cursor: pointer;
   transition: 0.3s;

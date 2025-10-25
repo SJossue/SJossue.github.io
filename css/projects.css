@@ -61,7 +61,7 @@
   font-weight: bold;
 }
 
-.project a:hover { background: #858585; transform: translateY(-2px); }
+.project a:hover { background: #1a3357; transform: translateY(-2px); }
 
 @media (min-width: 1000px) {
   .project .project-inner { flex-direction: row; align-items: center; }
