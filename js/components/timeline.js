@@ -1,19 +1,24 @@
 // Timeline data and loader
 const timelineData = [
   {
-    title: 'Baja Society of Automotive Engineers',
-    date: 'Sept 2025 - Present',
-    description: 'Structural Analysis & FEA: Perform finite element analysis of roll cage frame and integrated chassis design.'
+    title: 'SHPE Webmaster - SHPE NJIT',
+    date: 'Sep 2025 - Present',
+    description: 'Led the digital transformation for an 80+ member organization by architecting and deploying a modern React/Next.js website, improving page load speeds by 70% and increasing mobile responsiveness to 98% compatibility.'
   },
   {
-    title: 'Regional Public Affairs Intern - PSEG',
-    date: 'June 2025 - Aug 2025',
-    description: 'Project Management: Oversaw electrical substation and 69kV circuit projects and automated reporting processes.'
+    title: 'Chassis Subteam Member - Baja SAE',
+    date: 'Sep 2025 - Present',
+    description: 'Performed 12+ FEA iterations analyzing roll cage under front/side/rear impact loads, identifying stress concentration points that enabled weight reduction while meeting SAE competition requirements.'
   },
   {
-    title: "New Jersey Governor's Fellow - Center for Hispanic, Policy, Research, and Development",
+    title: "External Affairs Intern (Regional Public Affairs Team) - PSEG",
     date: 'June 2025 - Aug 2025',
-    description: 'Led a 6-member team in an 8-week project to develop a strategic plan adopted by HISPA.'
+    description: 'Engineered an automated data consolidation system using Excel (Advanced formulas, Power Query, conditional logic) to collect 200+ data points across 70+ municipalities, reducing manual report time by 95% and enabling same-day response to elected officials.'
+  },
+    {
+    title: "New Jersey Governors Fellow - Center for Hispanic Policy, Research, & Development (CHPRD)",
+    date: 'June 2025 - Aug 2025',
+    description: 'Led a 6-person team through an 8-week strategic planning project, conducting 20+ stakeholder interviews and analyzing 5 years of organizational data to develop a HISPA engagement framework projected to expand reach by 40%.'
   },
   {
     title: 'T.E.A.M. Coordinator - New Jersey Institute of Technology (EOP)',

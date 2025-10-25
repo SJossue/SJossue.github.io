@@ -38,7 +38,7 @@
   transition: transform 0.5s ease, opacity 1s ease;
   opacity: 0;
   transform: translateY(50px);
-  border-left: 10px solid #00122b;
+  border-left: 10px solid #858585;
 }
 
 .timeline-item:hover {

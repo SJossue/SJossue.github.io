@@ -31,7 +31,7 @@ header {
 }
 
 .header-right a:hover {
-  color: #00122b;
+  color: #858585;
 }
 
 /* Floating Navigation Bar */
@@ -46,7 +46,7 @@ header {
   border-radius: 12px;
   padding: 10px 5px;
   z-index: 1000;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
 }
 
 #floating-nav a {
@@ -59,7 +59,7 @@ header {
 }
 
 #floating-nav a:hover {
-  color: #00122b;
+  color: #858585;
   transform: scale(1.2);
 }
 
@@ -97,7 +97,7 @@ header {
 
 .header-nav a:hover,
 .header-nav a.active {
-  background: rgba(255,255,255,0.06);
+  background: rgba(255, 255, 255, 0.659);
   color: #fff;
 }
 

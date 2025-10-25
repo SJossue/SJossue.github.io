@@ -4,7 +4,7 @@ function loadHeader() {
   header.innerHTML = `
     <div class="header-left">
       <strong>Jossue Sarango</strong>
-      <span>New Jersey - NYC</span>
+      <span>New Jersey / NYC</span>
     </div>
     <nav class="header-nav">
       <a href="#cover">Home</a>
