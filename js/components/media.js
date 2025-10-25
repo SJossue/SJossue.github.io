@@ -1,9 +1,9 @@
 // Simple media gallery and lightbox
 const galleryData = [
-  'images/introbackground.jpg',
-  'images/SS 1.png',
-  'images/info1.jpg',
-  'images/Headshot.jpg'
+  'images/IMG1.png',
+  'images/IMG2.png',
+  'images/IMG3.png',
+  'images/IMG4.jpg'
 ];
 
 function loadMedia() {

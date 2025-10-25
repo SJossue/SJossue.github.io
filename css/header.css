@@ -59,7 +59,7 @@ header {
 }
 
 #floating-nav a:hover {
-  color: #858585;
+  color: #737272;
   transform: scale(1.2);
 }
 
@@ -97,7 +97,7 @@ header {
 
 .header-nav a:hover,
 .header-nav a.active {
-  background: rgba(255, 255, 255, 0.659);
+  background: rgba(64, 64, 64, 0.604);
   color: #fff;
 }
 
