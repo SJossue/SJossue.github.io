@@ -11,19 +11,19 @@ const projectsData = [
       title: 'Autonomous Robot Navigation Simulator',
       description: `• Developing object-oriented Python simulation framework implementing pathfinding algorithms (A*, Dijkstra) and obstacle avoidance logic for autonomous robot navigation, utilizing NumPy for efficient matrix operations and Pygame for real-time visualization.
   • Building modular architecture with configurable sensor models (LiDAR, ultrasonic) and physics engines to simulate real-world systems.`,
-      link: 'images/av python,png'
+      link: 'images/av python.png'
     },
   {
     image: 'images/SS 1.png',
     title: 'White Paper on the Integration of Electric Aircraft Systems',
     description: 'Research paper examining hybrid electric aircraft systems and their commercial viability.',
-    link: 'projects/Research 1.pdf'
+    link: 'projects/Research 2.pdf'
   },
   {
     image: 'images/info1.jpg',
     title: "Study on the Urban Integration of Shanghai's Maglev Technology",
     description: 'Analysis of maglev efficiency, urban impacts, and environmental considerations.',
-    link: 'projects/Research 2.pdf'
+    link: 'projects/Research 1.pdf'
   }
 ];
 
