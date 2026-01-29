@@ -1,24 +1,54 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Playfair_Display } from "next/font/google";
+import localFont from "next/font/local";
 import { Navigation } from "@/components/layout/Navigation";
 import { Footer } from "@/components/layout/Footer";
 import "./globals.css";
 
-const geistSans = Geist({
+const geistSans = localFont({
+  src: [
+    { path: "../fonts/Geist-400.ttf", weight: "400", style: "normal" },
+    { path: "../fonts/Geist-500.ttf", weight: "500", style: "normal" },
+    { path: "../fonts/Geist-600.ttf", weight: "600", style: "normal" },
+    { path: "../fonts/Geist-700.ttf", weight: "700", style: "normal" },
+  ],
   variable: "--font-geist-sans",
-  subsets: ["latin"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
+const geistMono = localFont({
+  src: [
+    { path: "../fonts/GeistMono-400.ttf", weight: "400", style: "normal" },
+    { path: "../fonts/GeistMono-500.ttf", weight: "500", style: "normal" },
+    { path: "../fonts/GeistMono-600.ttf", weight: "600", style: "normal" },
+    { path: "../fonts/GeistMono-700.ttf", weight: "700", style: "normal" },
+  ],
   variable: "--font-geist-mono",
-  subsets: ["latin"],
+  display: "swap",
 });
 
-const playfair = Playfair_Display({
+const playfair = localFont({
+  src: [
+    { path: "../fonts/PlayfairDisplay-400.ttf", weight: "400", style: "normal" },
+    { path: "../fonts/PlayfairDisplay-500.ttf", weight: "500", style: "normal" },
+    { path: "../fonts/PlayfairDisplay-600.ttf", weight: "600", style: "normal" },
+    {
+      path: "../fonts/PlayfairDisplay-400Italic.ttf",
+      weight: "400",
+      style: "italic",
+    },
+    {
+      path: "../fonts/PlayfairDisplay-500Italic.ttf",
+      weight: "500",
+      style: "italic",
+    },
+    {
+      path: "../fonts/PlayfairDisplay-600Italic.ttf",
+      weight: "600",
+      style: "italic",
+    },
+  ],
   variable: "--font-playfair",
-  subsets: ["latin"],
-  style: ["normal", "italic"],
-  weight: ["400", "500", "600"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {

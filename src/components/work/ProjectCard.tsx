@@ -10,6 +10,11 @@ type ProjectCardProps = {
 };
 
 export function ProjectCard({ project, index }: ProjectCardProps) {
+  const metadataParts = [
+    project.organization,
+    project.year ? `'${project.year.toString().slice(-2)}` : undefined,
+  ].filter((part): part is string => Boolean(part));
+
   return (
     <motion.article
       initial={{ opacity: 0, y: 60 }}
@@ -67,7 +72,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
               {/* Row 2: Metadata with fade effect */}
               <p className="mt-1 text-[13px] md:text-sm tracking-[-0.01em]">
                 <span className="text-[#a3a3a3]">
-                  {project.organization}, '{project.year.toString().slice(-2)}
+                  {metadataParts.join(", ")}
                 </span>
                 {project.tagline && (
                   <>
