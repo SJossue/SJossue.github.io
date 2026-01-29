@@ -4,8 +4,8 @@
 :root {
   /* Rich black foundation */
   --black-void: #000000;
-  --black-deep: #0a0a0a;
-  --black-rich: #0f0f0f;
+  --black-deep: #050505;
+  --black-rich: #0a0a0a;
   --black-soft: #141414;
   --black-warm: #1a1a1a;
 
@@ -64,7 +64,7 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--black-deep);
+  background: #050505;
 }
 
 ::-webkit-scrollbar-thumb {

@@ -1,58 +1,39 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { HeroWindow } from "@/components/work/HeroWindow";
 import { ProjectCard } from "@/components/work/ProjectCard";
-import { FadeInView } from "@/components/effects/FadeInView";
 import { projects } from "@/data/projects";
 import { staggerContainer } from "@/lib/animations";
 
 export default function WorkPage() {
   return (
-    <div>
-      {/* Hero Section with Spotlight */}
-      <section className="spotlight relative pt-32 pb-24 md:pt-40 md:pb-32 overflow-hidden">
-        <div className="relative z-10 mx-auto max-w-4xl px-6">
-          {/* Section label */}
-          <FadeInView className="mb-8">
-            <div className="flex items-center gap-3">
-              <span className="w-2 h-2 rounded-full bg-emerald-500" />
-              <span className="text-[#525252] text-xs tracking-[0.3em] uppercase">
-                Selected Work
-              </span>
-            </div>
-          </FadeInView>
+    <div className="relative">
+      {/* Global page spotlight - overhead studio light effect */}
+      <div className="pointer-events-none fixed inset-0 z-0">
+        {/* Primary spotlight - positioned high, bright center */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(ellipse 90% 45% at 50% 20%, rgba(255,255,255,0.12) 0%, #1a1a1a 25%, #0a0a0a 50%, transparent 75%)",
+          }}
+        />
+      </div>
 
-          {/* Large statement */}
-          <FadeInView>
-            <h1 className="text-4xl md:text-6xl font-medium text-[#e5e5e5] leading-[1.2] tracking-tight">
-              Projects that{" "}
-              <em className="font-serif italic text-gradient-warm">
-                solve real problems.
-              </em>
-            </h1>
-          </FadeInView>
-
-          {/* Subtext */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="mt-10 text-lg text-[#737373] leading-relaxed max-w-xl"
-          >
-            A collection of work spanning mechanical systems, embedded software, and full-stack development.
-          </motion.p>
-        </div>
+      {/* Hero Section */}
+      <section className="relative z-10 pt-28 pb-16 md:pt-36 md:pb-24 px-6">
+        <HeroWindow />
       </section>
 
-      {/* Projects stack */}
-      <div className="pb-24 md:pb-32">
-        <div className="mx-auto max-w-5xl px-6">
+      {/* Projects Stack */}
+      <div className="relative z-10 pb-32 md:pb-40 px-6">
+        <div className="mx-auto max-w-5xl">
           <motion.div
             initial="hidden"
             animate="visible"
             variants={staggerContainer}
-            className="space-y-16 md:space-y-24"
+            className="space-y-16 md:space-y-20"
           >
             {projects.map((project, index) => (
               <ProjectCard key={project.slug} project={project} index={index} />
