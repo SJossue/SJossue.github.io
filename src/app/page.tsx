@@ -1,5 +1,7 @@
-import { redirect } from "next/navigation";
+"use client";
+
+import WorkPage from "./work/page";
 
 export default function HomePage() {
-  redirect("/work");
+  return <WorkPage />;
 }
